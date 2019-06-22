@@ -20,8 +20,8 @@ public func routes(_ router: Router) throws {
         return "Cheesy fun time with \(name)"
     }
 
-    router.post(InfoData.self, at: "info") { req, data -> String in
-        return "Hello \(data.name)"
+    router.post(InfoData.self, at: "info") { req, data -> InfoResponse in
+        return InfoResponse(request: data)
     }
     // Example of configuring a controller
     let todoController = TodoController()
@@ -32,4 +32,9 @@ public func routes(_ router: Router) throws {
 
 struct InfoData:Content {
     let name: String
+    let birthday: Date
+}
+
+struct InfoResponse: Content {
+    let request: InfoData
 }
