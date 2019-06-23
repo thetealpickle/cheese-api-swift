@@ -1,5 +1,5 @@
 import Vapor
-import FluentSQLite
+import FluentMySQL
 
 final class Acronym: Codable {
     var id: Int?
@@ -13,7 +13,10 @@ final class Acronym: Codable {
 }
 
 // MARK: extending SQLiteModel protocol
-extension Acronym: SQLiteModel {}
+extension Acronym: MySQLModel {}
 
 // MARK: save database model with migration
 extension Acronym: Migration {}
+
+// MARK: Content protocol
+extension Acronym: Content {}

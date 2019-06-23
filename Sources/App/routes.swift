@@ -23,6 +23,12 @@ public func routes(_ router: Router) throws {
     router.post(InfoData.self, at: "info") { req, data -> InfoResponse in
         return InfoResponse(request: data)
     }
+    
+    router.post("api", "acronyms") {req -> Future<Acronym> in
+        return try req.content.decode(Acronym.self).flatMap(to: Acronym.self) { acronym in
+            return acronym.save(on: req)
+        }
+    }
 }
 
 struct InfoData:Content {
