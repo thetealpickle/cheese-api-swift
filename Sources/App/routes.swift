@@ -38,7 +38,12 @@ public func routes(_ router: Router) throws {
         })
     }
     
-    // MARK: Delete Functions
+    // MARK: Delete Function
+    router.delete("api", "acronyms", Acronym.parameter) { req -> Future<HTTPStatus> in
+        return try req.parameters.next(Acronym.self)
+            .delete(on: req)
+            .transform(to: .noContent)
+    }
 }
 
 struct InfoData:Content {
