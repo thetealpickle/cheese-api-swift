@@ -7,28 +7,38 @@ public func routes(_ router: Router) throws {
         return "It works!"
     }
     
-    // Basic "Hello, world!" example
-    router.get("hello") { req in
-        return "Hello, world!"
-    }
-    
-    // Adding a test route
-    router.get("cheese", String.parameter) {req -> String in
-        
-        let name = try req.parameters.next(String.self)
-        
-        return "Cheesy fun time with \(name)"
-    }
-
-    router.post(InfoData.self, at: "info") { req, data -> InfoResponse in
-        return InfoResponse(request: data)
-    }
-    
+    // MARK: Create Functions
     router.post("api", "acronyms") {req -> Future<Acronym> in
         return try req.content.decode(Acronym.self).flatMap(to: Acronym.self) { acronym in
             return acronym.save(on: req)
         }
     }
+    
+    // MARK: Retrieve Functions
+    router.get("api", "acronyms") { req -> Future<[Acronym]> in
+        return Acronym.query(on: req).all()
+    }
+    
+    router.get("api", "acronyms", Acronym.parameter) { req -> Future<Acronym> in
+        return try req.parameters.next(Acronym.self)
+    }
+    
+    // MARK: Update Functions
+    router.put("api", "acronyms", Acronym.parameter) { req -> Future<Acronym> in
+        return try flatMap(
+            to: Acronym.self,
+            req.parameters.next(Acronym.self),
+            req.content.decode(Acronym.self), {
+                acronym, updatedAcronym  in
+                
+                acronym.short = updatedAcronym.short
+                acronym.long = updatedAcronym.long
+                
+                return acronym.save(on: req)
+        })
+    }
+    
+    // MARK: Delete Functions
 }
 
 struct InfoData:Content {

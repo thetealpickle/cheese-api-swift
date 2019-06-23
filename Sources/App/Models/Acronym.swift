@@ -12,7 +12,7 @@ final class Acronym: Codable {
     }
 }
 
-// MARK: extending SQLiteModel protocol
+// MARK: Extending to SQLiteModel protocol
 extension Acronym: MySQLModel {}
 
 // MARK: save database model with migration
@@ -20,3 +20,7 @@ extension Acronym: Migration {}
 
 // MARK: Content protocol
 extension Acronym: Content {}
+
+// MARK: Extending to Parameter protocol
+// This allows the Acronym model to be passed as a route parameter
+extension Acronym: Parameter {}
