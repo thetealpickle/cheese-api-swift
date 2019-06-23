@@ -42,6 +42,12 @@ public func routes(_ router: Router) throws {
         .unwrap(or: Abort(.notFound))
     }
     
+    router.get("api", "acronyms", "sorted") { req -> Future<[Acronym]> in
+        return Acronym.query(on: req)
+        .sort(\.short, .ascending)
+        .all()
+    }
+    
     // MARK: Update Functions
     router.put("api", "acronyms", Acronym.parameter) { req -> Future<Acronym> in
         return try flatMap(
