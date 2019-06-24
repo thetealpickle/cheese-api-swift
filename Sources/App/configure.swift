@@ -37,7 +37,10 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
 
     // Configure migrations
     var migrations = MigrationConfig()
-    migrations.add(model: Acronym.self, database: .mysql)
+    
+    // user migration needs to be on top since there is a foreign link between the acronyms table and the user table
+    // can not create link to a non existing table
     migrations.add(model: User.self, database: .mysql)
+    migrations.add(model: Acronym.self, database: .mysql)
     services.register(migrations)
 }

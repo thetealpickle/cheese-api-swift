@@ -24,7 +24,14 @@ extension Acronym {
 extension Acronym: MySQLModel {}
 
 // MARK: save database model with migration
-extension Acronym: Migration {}
+extension Acronym: Migration {
+    static func prepare(on connection: MySQLConnection) -> Future<Void> {
+        return Database.create(self, on: connection) { builder in
+            try addProperties(to: builder)
+            builder.reference(from: \.userID, to: \User.id)
+        }
+    }
+}
 
 // MARK: Content protocol
 extension Acronym: Content {}
