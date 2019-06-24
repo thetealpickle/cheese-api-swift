@@ -14,6 +14,12 @@ final class Acronym: Codable {
     }
 }
 
+extension Acronym {
+    var user: Parent<Acronym, User> {
+        return parent(\.userID)
+    }
+}
+
 // MARK: Extending to SQLiteModel protocol
 extension Acronym: MySQLModel {}
 

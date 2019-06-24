@@ -9,6 +9,7 @@ struct UserController: RouteCollection {
         
         userRouter.get(use: getAllHandler)
         userRouter.get(User.parameter, use: getHandler)
+        userRouter.get(User.parameter, "acronyms", use: getAcronymsHandler)
     }
     
     func createHandler(_ req: Request, user: User) throws -> Future<User> {
@@ -21,5 +22,11 @@ struct UserController: RouteCollection {
     
     func getHandler(_ req: Request) throws -> Future<User> {
         return try req.parameters.next(User.self)
+    }
+    
+    func getAcronymsHandler(_ req: Request) throws -> Future<[Acronym]> {
+        return try req.parameters.next(User.self).flatMap(to: [Acronym].self) { user in
+            try user.acronyms.query(on: req).all()
+        }
     }
 }
