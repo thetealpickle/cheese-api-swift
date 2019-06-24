@@ -18,5 +18,13 @@ final class AcronymCategoryPivot: MySQLUUIDPivot {
     }
 }
 
-extension AcronymCategoryPivot: Migration {}
+extension AcronymCategoryPivot: Migration {
+    static func prepare(on connection: MySQLConnection) -> Future<Void> {
+        return Database.create(self, on: connection){ builder in
+            try addProperties(to: builder)
+            builder.reference(from: \.acronymID, to: \Acronym.id, onDelete: .cascade)
+            builder.reference(from: \.categoryID, to: \Category.id, onDelete: .cascade)
+        }
+    }
+}
 extension AcronymCategoryPivot: ModifiablePivot {}
