@@ -42,5 +42,6 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     // can not create link to a non existing table
     migrations.add(model: User.self, database: .mysql)
     migrations.add(model: Acronym.self, database: .mysql)
+    migrations.add(model: Category.self, database: .mysql)
     services.register(migrations)
 }
