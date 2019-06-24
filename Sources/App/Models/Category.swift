@@ -10,6 +10,12 @@ final class Category: Codable {
     }
 }
 
+extension Category {
+    var acronyms: Siblings<Category, Acronym, AcronymCategoryPivot> {
+        return siblings()
+    }
+}
+
 extension Category: MySQLModel {}
 extension Category: Content {}
 extension Category: Migration {}
