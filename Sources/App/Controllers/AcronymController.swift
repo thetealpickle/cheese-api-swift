@@ -20,6 +20,7 @@ struct AcronymController: RouteCollection {
         acronymsRoutes.put(Acronym.parameter, use: updateHandler)
         
         acronymsRoutes.delete(Acronym.parameter, use: deleteHandler)
+        acronymsRoutes.delete(Acronym.parameter, "categories", Category.parameter, use: removeCategoryHandler)
     }
     
     // MARK: Retrieve Methods
@@ -94,5 +95,11 @@ struct AcronymController: RouteCollection {
     // MARK: Delete Method
     func deleteHandler(_ req: Request) throws -> Future<HTTPStatus> {
         return try req.parameters.next(Acronym.self).delete(on: req).transform(to: .noContent)
+    }
+    
+    func removeCategoryHandler(_ req: Request) throws -> Future<HTTPStatus> {
+        return try flatMap(to: HTTPStatus.self, req.parameters.next(Acronym.self), req.parameters.next(Category.self)) { acronym, category in
+            return acronym.categories.detach(category, on: req).transform(to: .noContent)
+        }
     }
 }
