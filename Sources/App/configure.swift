@@ -20,17 +20,30 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     // Configure a SQLite database
 //    let sqlite = try SQLiteDatabase(storage: .memory)
 //    let sqlite = try SQLiteDatabase(storage: .file(path: "db.sqlite"))
-
-    let mysqlConfig = MySQLDatabaseConfig(
-        hostname: "localhost",
-        username: "vapor",
-        password: "password",
-        database: "vapor"
-    )
-    
     
     // Register the configured SQLite database to the database config.
     var databases = DatabasesConfig()
+    
+    let databaseName: String
+    let databasePort: Int
+    
+    if (env == .testing) {
+        databaseName = "vapor-test"
+        databasePort = 3307
+    } else {
+        databaseName = "vapor"
+        databasePort = 3306
+    }
+    
+    let mysqlConfig = MySQLDatabaseConfig(
+        hostname: "localhost",
+        port: databasePort,
+        username: "vapor",
+        password: "password",
+        database: databaseName
+    )
+    
+    
     let database = MySQLDatabase(config: mysqlConfig)
     databases.add(database: database, as: .mysql)
     services.register(databases)
@@ -45,4 +58,9 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     migrations.add(model: Category.self, database: .mysql)
     migrations.add(model: AcronymCategoryPivot.self, database: .mysql)
     services.register(migrations)
+    
+    // Configure Command
+    var commandConfig = CommandConfig()
+    commandConfig.useFluentCommands()
+    services.register(commandConfig)
 }
