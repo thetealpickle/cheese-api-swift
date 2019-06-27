@@ -29,4 +29,45 @@ extension Application {
         try Application.testable(envArgs: migrateEnvArgs).asyncRun().wait()
         
     }
+    
+    func sendRequest<T> (
+        to path: String,
+        method: HTTPMethod,
+        headers: HTTPHeaders = .init(),
+        body: T? = nil) throws -> Response where T: Content {
+        let responder = try self.make(Responder.self)
+        
+        let request = HTTPRequest(method: method, url: URL(string: path)!, headers: headers)
+        let wrappedRequest = Request(http: request, using: self)
+        
+        if let body = body {
+            try wrappedRequest.content.encode(body)
+        }
+        
+        return try responder.respond(to: wrappedRequest).wait()
+    }
+
+    func sendRequest (
+        to path: String,
+        method: HTTPMethod,
+        headers: HTTPHeaders = .init()
+        ) throws -> Response {
+        
+        let emptyContent: EmptyContent? = nil
+        
+        return try sendRequest(to: path, method: method, headers: headers, body: emptyContent)
+    }
+    
+    func sendRequest<T> (
+        to path: String,
+        method: HTTPMethod,
+        headers: HTTPHeaders,
+        data: T
+        ) throws where T: Content {
+        
+        _ = try self.sendRequest(to: path, method: method, headers: headers, body: data)
+    }
 }
+
+// Create Empty Content to send in place of nil for sending a request
+struct EmptyContent: Content {}
