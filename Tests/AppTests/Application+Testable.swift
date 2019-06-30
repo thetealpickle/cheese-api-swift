@@ -27,7 +27,6 @@ extension Application {
         // Reset the database for current test run
         let migrateEnvArgs = ["vapor", "migrate", "-y"]
         try Application.testable(envArgs: migrateEnvArgs).asyncRun().wait()
-        
     }
     
     func sendRequest<T> (
