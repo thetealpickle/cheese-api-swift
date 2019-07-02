@@ -115,7 +115,12 @@ SQLite does not compete with client/server databases like MySQL or PostgreSQL.<b
 SQLite competes more with standard file management libraries such as fopen().
 
 #### MySQL
+MySQL was designed for speed and reliability, making it an ideal database for many use cases.<br>
+Currently many large applications and sites such as Facebook, Spotify, and Netflix are powered by MySQL.<br>
+MySQL's speed and reliability come at the cost of not fully being SQL compliant, so there are some functional limitations depending on your use case.<br><br>
 
+Disadvantages of MySQL: [SQL compliance and functionality limitations, licence and propriety features, and slowed development]<br>
+Advantages of MySQL: [security, speed, replication (useful for horizontal scaling), and popularity/ease of use]
 
 
 <p align="center">
