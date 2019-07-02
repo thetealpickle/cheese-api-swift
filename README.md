@@ -18,7 +18,7 @@ OKAY, some more effort into the explanation, here we go<br>
 
 Brace yourself, more detailed steps coming. Get your cup of water please<br>
 
-### Docker Setup
+### 1/3 Docker Setup
 You'll first want to get Docker up and running.<br>
 
 Head over to the Docker website and start the download of the <a href='https://www.docker.com/products/docker-desktop'>Docker Desktop Application</a><br>
@@ -75,7 +75,7 @@ Okay.
 Alright, bitch. Welp. That was most of the work.<br>
 Take a breathe, almost done.<br>
 
-### Clone the project
+### 2/3 Clone the project
 Easiest method if you don't have ssh setup on your device is to download the zip and unzip it. bam.<br>
 
 <b>HOWEVER</b>, you probably do have SSH setup. 
@@ -84,7 +84,7 @@ If not, but you're interested in doing so (a good thing to do for a secure conne
 Yay, project cloned, docker running. Time to build and run.
 This is it.
 
-### Building and Running the Project
+### 3/3 Building and Running the Project
 Pull up a new terminal window and change directory `cd` AKA navigate to your project's folder.<br>
 First, you'll want to build your project's dependencies.<br>
 
