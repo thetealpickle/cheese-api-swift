@@ -40,28 +40,28 @@ docker run --name mysql -e MYSQL_DATABASE=vapor -e MYSQL_USER=vapor -e MYSQL_PAS
 Hey, Jessica. WTF, did I just type?<br><br>
 
 Okay.
-`docker run`
+```docker run```
 The docker command for running a docker database<br>
 
-`--name mysql`
+```--name mysql```
 The database container I want to create can be identified with the name mysql. This is the name you will use when you want to stop, start, and  remove your database<br>
 
-`-e MYSQL_DATABASE=vapor`
+```-e MYSQL_DATABASE=vapor```
 Setup the global variable for my mysql database to the value 'vapor'. This is the database reference that is used in your server's configure.swift file for setting up your databse configuration<br>
 
-`-e MYSQL_USER=vapor`
+```-e MYSQL_USER=vapor```
 Setup the global variable for my mysql user to the value 'vapor'. This is the username reference that is used in your server's configure.swift file for setting up your database configuration.<br>
 
-`-e MYSQL_PASSWORD=password`
+```-e MYSQL_PASSWORD=password```
 Setup the global variable for my mysql password to the value 'password'. This is the password reference that is used in your server's configure.swift file for setting up your database configuration.<br>
 
-`-p 3306:3306`
+```-p 3306:3306```
 Set the port for your docker database to run on port 3306. 3306 is the default MySQL port.<br>
 
-`-d`
+```-d```
 Set the database to be detached. Detached mode is when your database container is running in the background.<br>
 
-`mysql/mysql-server:5.7`
+```mysql/mysql-server:5.7```
 Specifying which mysql server version to use. In this case, 5.7<br><br>
 
 Alright, bitch. Welp. That was most of the work.<br>
