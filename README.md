@@ -3,33 +3,32 @@
 Playing around with server side swift and Vapor 3 with this cheese centered API.<br>
 
 ## Running a Docker MySQL Database
-The three databases with Vapor support are sqlite, msql, and postgresql.<br><br>
-
-This project uses MySQL as its database.<br><br>
+The three databases with Vapor support are sqlite, msql, and postgresql.<br>
+This project uses MySQL as its database.<br>
 
 To get this project running on your machine, 3 steps.
 1. Get a Docker MySQL Database up and Running<br>
 2. Clone the project to your machine<br>
-3. Build and run the project<br><br> 
+3. Build and run the project<br>
 
-That is all. 🙃<br><br>
+That is all. 🙃<br>
 
 Haha. As if beginner Jessica would understand that shit. 😭<br>
-OKAY, some more effort into the explanation, here we go<br><br>
+OKAY, some more effort into the explanation, here we go<br>
 
-Brace yourself, more detailed steps coming. Get your cup of water please<br><br>
+Brace yourself, more detailed steps coming. Get your cup of water please<br>
 
 ### Docker Setup
-You'll first want to get Docker up and running.<br><br>
+You'll first want to get Docker up and running.<br>
 
-Head over to the Docker website and start the download of the <a href="https://www.docker.com/products/docker-desktop">Docker Desktop Application</a><br>
+Head over to the Docker website and start the download of the <a href='https://www.docker.com/products/docker-desktop'>Docker Desktop Application</a><br>
 Assuming the link hasn't changed, you should be able to click on 'Docker Desktop Application' above to be directed to the website.<br><br>
 
 Cool, while that's downloading (can't remember if it took a while, let's assuming it does). Create a docker application. You'll need these credentials to log into the desktop application.<br>
 No worries, you won't be charged for anything. F R E E. 💰👍🏾<br><br>
 
 Up to this point you should have logged into the Docker desktop application with your docker credentials.<br>
-Hold up, you haven't started any databases yet. You've set the stage so that you CAN start running databases.<br><br>
+Hold up, you haven't started any databases yet. You've set the stage so that you <b>CAN</b> start running databases.<br><br>
 
 Open up a new Terminal window and type the command
 ```
@@ -40,49 +39,60 @@ docker run --name mysql -e MYSQL_DATABASE=vapor -e MYSQL_USER=vapor -e MYSQL_PAS
 Hey, Jessica. WTF, did I just type?<br><br>
 
 Okay.
+
 ```docker run```
-The docker command for running a docker database<br>
+
+<i>The docker command for running a docker database</i>
 
 ```--name mysql```
-The database container I want to create can be identified with the name mysql. This is the name you will use when you want to stop, start, and  remove your database<br>
+
+<i>The database container I want to create can be identified with the name mysql. This is the name you will use when you want to stop, start, and  remove your database</i>
 
 ```-e MYSQL_DATABASE=vapor```
-Setup the global variable for my mysql database to the value 'vapor'. This is the database reference that is used in your server's configure.swift file for setting up your databse configuration<br>
+
+<i>Setup the global variable for my mysql database to the value 'vapor'. This is the database reference that is used in your server's configure.swift file for setting up your databse configuration</i>
 
 ```-e MYSQL_USER=vapor```
-Setup the global variable for my mysql user to the value 'vapor'. This is the username reference that is used in your server's configure.swift file for setting up your database configuration.<br>
+
+<i>Setup the global variable for my mysql user to the value 'vapor'. This is the username reference that is used in your server's configure.swift file for setting up your database configuration.</i>
 
 ```-e MYSQL_PASSWORD=password```
-Setup the global variable for my mysql password to the value 'password'. This is the password reference that is used in your server's configure.swift file for setting up your database configuration.<br>
+
+<i>Setup the global variable for my mysql password to the value 'password'. This is the password reference that is used in your server's configure.swift file for setting up your database configuration.</i>
 
 ```-p 3306:3306```
-Set the port for your docker database to run on port 3306. 3306 is the default MySQL port.<br>
+
+<i>Set the port for your docker database to run on port 3306. 3306 is the default MySQL port.</i>
 
 ```-d```
-Set the database to be detached. Detached mode is when your database container is running in the background.<br>
+
+<i>Set the database to be detached. Detached mode is when your database container is running in the background.</i>
 
 ```mysql/mysql-server:5.7```
-Specifying which mysql server version to use. In this case, 5.7<br><br>
+
+<i>Specifying which mysql server version to use. In this case, 5.7</i>
 
 Alright, bitch. Welp. That was most of the work.<br>
 Take a breathe, almost done.<br>
 
 ### Clone the project
-Easiest method if you don't have ssh setup on your device is to download the zip and unzip it. bam.<br><br>
+Easiest method if you don't have ssh setup on your device is to download the zip and unzip it. bam.<br>
 
-HOWEVER, you probably do have SSH setup. If not, but you're interested in doing so (a good thing to do for a secure connection between your machine and your github account). You can follow < a href="https://help.github.com/en/articles/connecting-to-github-with-ssh">this article</a> (Assuming the link hasn't changed since writing this 😬).<br>
+<b>HOWEVER</b>, you probably do have SSH setup. 
+If not, but you're interested in doing so (a good thing to do for a secure connection between your machine and your github account). You can follow <a href='https://help.github.com/en/articles/connecting-to-github-with-ssh'>this article</a> (Assuming the link hasn't changed since writing this 😬).
 
-Yay, project cloned, docker running. Time to build and run.<br> This is it.<br>
+Yay, project cloned, docker running. Time to build and run.
+This is it.
 
 ### Building and Running the Project
 Pull up a new terminal window and change directory `cd` AKA navigate to your project's folder.<br>
 First, you'll want to build your project's dependencies.<br>
 
-`vapor build`
+```vapor build```
 
 Now, run your project
 
-`vapor run`
+```vapor run```
 
 From here you can use the Postman or RESTed app to test your API endpoints.<br><br>
 
