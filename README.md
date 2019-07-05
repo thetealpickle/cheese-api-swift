@@ -122,6 +122,9 @@ MySQL's speed and reliability come at the cost of not fully being SQL compliant,
 Disadvantages of MySQL: [SQL compliance and functionality limitations, licence and propriety features, and slowed development]<br>
 Advantages of MySQL: [security, speed, replication (useful for horizontal scaling), and popularity/ease of use]
 
+#### PostgreSQL
+PostgreSQL is the most advanced open-source relational database. PostgreSQL was designed to be highly extensible and standard compliant.<br>
+
 
 <p align="center">
     <img src="https://user-images.githubusercontent.com/1342803/36623515-7293b4ec-18d3-11e8-85ab-4e2f8fb38fbd.png" width="320" alt="API Template">
