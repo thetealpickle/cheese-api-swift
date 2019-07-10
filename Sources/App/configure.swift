@@ -39,7 +39,6 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
         database: databaseName
     )
     
-    
     let database = MySQLDatabase(config: mysqlConfig)
     databases.add(database: database, as: .mysql)
     services.register(databases)
@@ -54,6 +53,9 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     migrations.add(model: Category.self, database: .mysql)
     migrations.add(model: AcronymCategoryPivot.self, database: .mysql)
     services.register(migrations)
+    
+    // TODO: Fix the Migration and Database connection
+    // Server is not connectng, progam ending with exit code: 0
     
     // Configure Command
     var commandConfig = CommandConfig()
