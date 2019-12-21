@@ -19,7 +19,15 @@ Features:
 ### HOW? 🧠
 Vapor 3, babyyyyyy 💨
 
----
+
+## BACKSTORY
+
+In the alien hyperstream (the human equivalent of a mall), the substance known on earth as cheese 🧀 is sold as a highly corrosive weapon 🦠💣 capable of destroying species and slowing down thier higher consciousness evolution. Quite a useful tool in war 😬. Different planets culture varying toxic levels of cheese. <br><br>
+
+The ultimate alien queen 👑 is sending out a squad to go to every planet and collect cheese data. The queen has an affinity for earth and wants to use human technology for the squad's data collection. To keep the technology authentically human, the queen had an actaul human develop the technology.<br><br>
+
+This is the API.
+
 ## Running a Docker MySQL Database
 The three databases with Vapor support are sqlite, msql, and postgresql.<br>
 This project uses MySQL as its database.<br>
