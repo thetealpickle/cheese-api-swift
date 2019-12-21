@@ -1,4 +1,5 @@
-# CheeseVapor 
+# CheeseVapor API Template
+⚠️ [FEATURE REFACTOR IN PROGRESS] ⚠️
 
 HELLO! [@THETEALPICKLE](https://instagram/thetealpickle.com) HERE.
 Are you a lazy backend coder who loves cheese? 
@@ -8,8 +9,6 @@ Then this is your template.
 CheeseVapor is a Swift based server based on cheese 🧀
 
 ### WHAT? 🙃
-⚠️ [FEATURE REFACTOR IN PROGRESS] ⚠️
-
 Features:
 - Authentication [Login/Token]
 - Logging
