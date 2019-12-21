@@ -17,7 +17,8 @@ final class Cheese {
     var planetID: Planet.ID
 
     init(_ name: String, from planetID: Planet.ID) {
-        
+        self.name = name
+        self.planetID = planetID
     }
 }
 
