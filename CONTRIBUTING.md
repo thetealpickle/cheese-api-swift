@@ -1,13 +1,16 @@
-# Contributing to Vapor API Template
+# Contributing to Cheese Vapor API Template
 
-If you found a mistake or think of a cool new feature, please [create an issue](https://github.com/vapor/api-template/issues/new) or, if you want to implement it yourself, [fork this repo](https://github.com/vapor/api-template/fork) and open a Pull Request!
+HELLO! @THETEALPICKLE HERE.
 
-We'll take a look as soon as we can.
+Have a new feature idea? ⚡️👉🏾 [SUBMIT AN ISSUE](https://github.com/thetealpickle/cheese-api-swift/issues/new)👈🏾⚡️
 
-Thanks!
+Found a mistake? 
+1. [Fork this repo](https://github.com/thetealpickle/cheese-api-swift/fork)🍴
+2. Implement a fix 🔨  
+3. Open a PR (Pull Request)  🔥
 
-## Maintainers
+PR's are reviewed twice a week 👀
 
-- [@0xTim](https://github.com/0xTim)
+## Maintainer
+[@thetealpickle](https://github.com/thetealpickle) 🤖♥️🎉
 
-See the [Vapor maintainers doc](https://github.com/vapor/vapor/blob/master/Docs/maintainers.md) for more information.

@@ -1,7 +1,26 @@
-# Cheese API
+# CheeseVapor 
 
-Playing around with server side swift and Vapor 3 with this cheese centered API.<br>
+HELLO! [@THETEALPICKLE](https://instagram/thetealpickle.com) HERE.
+Are you a lazy backend coder who loves cheese? 
+Then this is your template.
 
+### WHO? 🤖
+CheeseVapor is a Swift based server based on cheese 🧀
+
+### WHAT? 🙃
+⚠️ [FEATURE REFACTOR IN PROGRESS] ⚠️
+
+Features:
+- Authentication [Login/Token]
+- Logging
+- Model Testing
+- Request Testing
+
+
+### HOW? 🧠
+Vapor 3, babyyyyyy 💨
+
+---
 ## Running a Docker MySQL Database
 The three databases with Vapor support are sqlite, msql, and postgresql.<br>
 This project uses MySQL as its database.<br>
