@@ -14,11 +14,25 @@ final class Cheese: Codable {
     var fluentUpdatedAt: String?
 
     var name: String
-    var planetID: Planet.ID
+    var planetId: Planet.ID
+    var userId: Planet.ID
 
-    init(_ name: String, from planetID: Planet.ID) {
+    init(_ name: String, from planetId: Planet.ID, uploadedBy userId: User.ID) {
         self.name = name
-        self.planetID = planetID
+        self.planetId = planetId
+        self.userId = userId
+    }
+}
+
+// MARK: - Class Extensions
+// MARK: X10: Parent/Child/Sibling Relationships
+extension Cheese {
+    var user: Parent<Cheese, User> {
+        return parent(\.userId)
+    }
+
+    var planet: Siblings<Cheese, Planet, CheesePlanetPivot> {
+        return siblings()
     }
 }
 
