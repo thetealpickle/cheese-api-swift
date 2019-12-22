@@ -1,3 +1,8 @@
+//  B0RN BKLYN Inc.
+//  PROJECT: BBAPI
+//
+//  Copyright © 2019 JESSICA JEAN JOSEPH. All rights reserved.
+
 import Vapor
 import Foundation
 import FluentMySQL
