@@ -1,4 +1,9 @@
-// swift-tools-version:4.0
+//  B0RN BKLYN Inc.
+//  PROJECT: CheeseVapor
+//
+//  Copyright © 2019 JESSICA JEAN JOSEPH. All rights reserved.
+//  MIT License
+
 import PackageDescription
 
 let package = Package(

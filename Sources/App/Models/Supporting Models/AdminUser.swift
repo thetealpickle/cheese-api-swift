@@ -29,7 +29,7 @@ final class AdminUser: Migration {
         return admin.save(on: conn).transform(to: ())
     }
 
-    static func revert(on conn: MySQLConnection) -> EventLoopFuture<Void> {
+    static func revert(on conn: MySQLConnection) -> Future<Void> {
         return .done(on: conn)
     }
 }
