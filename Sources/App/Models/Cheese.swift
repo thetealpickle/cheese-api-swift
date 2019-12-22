@@ -1,13 +1,13 @@
+//  B0RN BKLYN Inc.
+//  PROJECT: CheeseVapor
 //
-//  Cheese.swift
-//  App
-//
-//  Created by Jessica Joseph on 12/21/19.
-//
+//  Copyright © 2019 JESSICA JEAN JOSEPH. All rights reserved.
+//  MIT License
 
+import FluentMySQL
 import Vapor
 
-final class Cheese {
+final class Cheese: Codable {
     var id: UUID?
 
     var fluentCreatedAt: String?
@@ -22,3 +22,8 @@ final class Cheese {
     }
 }
 
+// MARK: X10: Vapor Models
+extension Cheese: Content {}
+extension Cheese: Migration {}
+extension Cheese: MySQLUUIDModel {}
+extension Cheese: Parameter {}

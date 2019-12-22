@@ -4,10 +4,8 @@
 //  Copyright © 2019 JESSICA JEAN JOSEPH. All rights reserved.
 //  MIT License
 
-
-import Vapor
-import Foundation
 import FluentMySQL
+import Vapor
 
 final class User: Codable {
     var id: UUID?
@@ -26,12 +24,15 @@ final class User: Codable {
     }
 }
 
+// MARK: - Class Extensions
+// MARK: X10: Parent/Child/Sibling Relationships
 extension User {
-    var acronyms: Children<User, Acronym> {
+    var acronyms: Children<User, Planet> {
         return children(\.userID)
     }
 }
 
+// MARK: X10: Vapor Models
 extension User: MySQLUUIDModel {}
 extension User: Content {}
 extension User: Migration {}
