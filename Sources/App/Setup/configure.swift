@@ -12,9 +12,9 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     services.register(router, as: Router.self)
 
     // Register middleware
-    var middlewares = MiddlewareConfig() // Create _empty_ middleware config
+    var middlewares = MiddlewareConfig()
     // middlewares.use(FileMiddleware.self) // Serves files from `Public/` directory
-    middlewares.use(ErrorMiddleware.self) // Catches errors and converts to HTTP response
+    middlewares.use(ErrorMiddleware.self)
     services.register(middlewares)
     
     // Register the configured SQLite database to the database config.
@@ -45,18 +45,14 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
 
     // Configure migrations
     var migrations = MigrationConfig()
-    
-    // user migration needs to be on top since there is a foreign link between the acronyms table and the user table
-    // can not create link to a non existing table
     migrations.add(model: User.self, database: .mysql)
     migrations.add(model: Acronym.self, database: .mysql)
     migrations.add(model: Category.self, database: .mysql)
     migrations.add(model: AcronymCategoryPivot.self, database: .mysql)
+
+    migrations.add(migration: AdminUser.self, database: .mysql)
     services.register(migrations)
-    
-    // TODO: Fix the Migration and Database connection
-    // Server is not connectng, progam ending with exit code: 0
-    
+
     // Configure Command
     var commandConfig = CommandConfig()
     commandConfig.useFluentCommands()
