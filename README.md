@@ -1,7 +1,16 @@
 # CheeseVapor API Template
 ⚠️ [FEATURE REFACTOR IN PROGRESS] ⚠️
 
-HELLO! [@THETEALPICKLE](https://instagram/thetealpickle.com) HERE.
+<p align="center">
+    <a href="LICENSE">
+        <img src="http://img.shields.io/badge/license-MIT-brightgreen.svg" alt="MIT License">
+    </a>
+    <a href="https://swift.org">
+        <img src="http://img.shields.io/badge/swift-4.1-brightgreen.svg" alt="Swift 4.1">
+    </a>
+</p>
+
+HELLO! [@THETEALPICKLE](https://instagram/thetealpickle) HERE.
 Are you a lazy backend coder who loves cheese? 
 Then this is your template.
 
@@ -9,7 +18,7 @@ Then this is your template.
 
 In the alien hyperstream (the human equivalent of a mall), the substance known on earth as cheese 🧀 is sold as a highly corrosive weapon 🦠💣 capable of destroying species and slowing down thier higher consciousness evolution. Quite a useful tool in war 😬. Different planets culture varying toxic levels of cheese. <br>
 
-The ultimate alien queen 👑 is sending out a squad to go to every planet and collect cheese data. The queen has an affinity for earth and wants to use human technology for the squad's data collection. To keep the technology authentically human, the queen had an actaul human develop the technology.<br>
+The ultimate alien queen 👑 is sending out a squad to go to every planet and collect cheese data. The queen has an affinity for earth and wants to use human technology for the squad's data collection. To keep the technology authentically human, the queen had an actual human develop the technology.<br>
 
 This is the API.
 
@@ -148,25 +157,3 @@ Advantages of MySQL: [security, speed, replication (useful for horizontal scalin
 
 #### PostgreSQL
 PostgreSQL is the most advanced open-source relational database. PostgreSQL was designed to be highly extensible and standard compliant.<br>
-
-
-<p align="center">
-    <img src="https://user-images.githubusercontent.com/1342803/36623515-7293b4ec-18d3-11e8-85ab-4e2f8fb38fbd.png" width="320" alt="API Template">
-    <br>
-    <br>
-    <a href="http://docs.vapor.codes/3.0/">
-        <img src="http://img.shields.io/badge/read_the-docs-2196f3.svg" alt="Documentation">
-    </a>
-    <a href="https://discord.gg/vapor">
-        <img src="https://img.shields.io/discord/431917998102675485.svg" alt="Team Chat">
-    </a>
-    <a href="LICENSE">
-        <img src="http://img.shields.io/badge/license-MIT-brightgreen.svg" alt="MIT License">
-    </a>
-    <a href="https://circleci.com/gh/vapor/api-template">
-        <img src="https://circleci.com/gh/vapor/api-template.svg?style=shield" alt="Continuous Integration">
-    </a>
-    <a href="https://swift.org">
-        <img src="http://img.shields.io/badge/swift-4.1-brightgreen.svg" alt="Swift 4.1">
-    </a>
-</p>
