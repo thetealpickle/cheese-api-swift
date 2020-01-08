@@ -7,3 +7,5 @@
 import Foundation
 
 typealias UUIDString = String
+
+let API_VERSION = "v0"

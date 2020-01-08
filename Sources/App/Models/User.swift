@@ -25,13 +25,6 @@ final class User: Codable {
 }
 
 // MARK: - Class Extensions
-// MARK: X10: Parent/Child/Sibling Relationships
-extension User {
-    var acronyms: Children<User, Planet> {
-        return children(\.userID)
-    }
-}
-
 // MARK: X10: Vapor Models
 extension User: MySQLUUIDModel {}
 extension User: Content {}
