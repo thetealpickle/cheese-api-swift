@@ -8,7 +8,7 @@ import FluentMySQL
 import Vapor
 
 final class Cheese: Codable {
-    var id: UUID?
+    var id: UUIDString? // custom id needs to have its type specified, see model X10
 
     var createdAt: Date?
     var updatedAt: Date?
@@ -18,6 +18,10 @@ final class Cheese: Codable {
 
     init(_ name: String) {
         self.name = name
+
+        self.id = UUID().uuidString
+        self.createdAt = Date()
+        self.updatedAt = Date()
     }
 }
 
@@ -25,5 +29,12 @@ final class Cheese: Codable {
 // MARK: X10: Vapor/Fluent Models
 extension Cheese: Content {}
 extension Cheese: Migration {}
-extension Cheese: MySQLUUIDModel {}
 extension Cheese: Parameter {}
+
+// MARK: X10: Model
+extension Cheese: Model {
+    typealias Database = MySQLDatabase
+
+    typealias ID = UUIDString
+    static let idKey: IDKey = \Cheese.id
+}
