@@ -20,14 +20,7 @@ final class Planet: Codable {
 }
 
 // MARK: - Class Extensions
-// MARK: X10: Parent/Child/Sibling Relationships
-extension Planet {
-    var user: Parent<Planet, User> {
-        return parent(\.userID)
-    }
-}
-
-// MARK: X10: Vapor Models
+// MARK: X10: Vapor/Fluent Models
 extension Planet: MySQLUUIDModel {}
 extension Planet: Content {}
 extension Planet: Migration {}

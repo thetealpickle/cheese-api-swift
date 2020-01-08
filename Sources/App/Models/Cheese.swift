@@ -10,33 +10,19 @@ import Vapor
 final class Cheese: Codable {
     var id: UUID?
 
-    var fluentCreatedAt: String?
-    var fluentUpdatedAt: String?
+    var createdAt: Date?
+    var updatedAt: Date?
 
     var name: String
-    var planetId: Planet.ID
-    var userId: Planet.ID
 
-    init(_ name: String, from planetId: Planet.ID, uploadedBy userId: User.ID) {
+
+    init(_ name: String) {
         self.name = name
-        self.planetId = planetId
-        self.userId = userId
     }
 }
 
 // MARK: - Class Extensions
-// MARK: X10: Parent/Child/Sibling Relationships
-extension Cheese {
-    var user: Parent<Cheese, User> {
-        return parent(\.userId)
-    }
-
-    var planet: Siblings<Cheese, Planet, CheesePlanetPivot> {
-        return siblings()
-    }
-}
-
-// MARK: X10: Vapor Models
+// MARK: X10: Vapor/Fluent Models
 extension Cheese: Content {}
 extension Cheese: Migration {}
 extension Cheese: MySQLUUIDModel {}
