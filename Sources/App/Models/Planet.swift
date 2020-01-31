@@ -20,8 +20,29 @@ final class Planet: Codable {
 }
 
 // MARK: - Class Extensions
+// MARK: X10: Vapor Relationships
+extension Planet {
+    var user: Parent<Planet, User> {
+        return parent(\.userID)
+    }
+    
+    var cheeses: Siblings<Planet, Cheese, PlanetCheesePivot> {
+        return siblings()
+    }
+}
+
 // MARK: X10: Vapor/Fluent Models
 extension Planet: MySQLUUIDModel {}
 extension Planet: Content {}
-extension Planet: Migration {}
+extension Planet: Migration {
+    
+    static func prepare(on connection: MySQLConnection) -> Future<Void> {
+        return Database.create(self, on: connection) { builder in
+            
+            try addProperties(to: builder)
+            builder.reference(from: \.userID, to: \User.id)
+        }
+    }
+    
+}
 extension Planet: Parameter {}

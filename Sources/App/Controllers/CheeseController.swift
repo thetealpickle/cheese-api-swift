@@ -13,7 +13,9 @@ struct CheeseController: RouteCollection {
 
         // create routes
         cheeseRoutes.post(use: createCheeseHandler)
-
+        cheeseRoutes.post(Cheese.parameter, "planets", Planet.parameter,
+                          use: addPlanetHandler)
+        
         // retrieve routes
         cheeseRoutes.get( use: getAllCheesesHandler)
 
@@ -37,6 +39,16 @@ struct CheeseController: RouteCollection {
             .decode(Cheese.self)
             .flatMap(to: Cheese.self) { cheese in
                 return cheese.save(on: req)
+        }
+    }
+    
+    func addPlanetHandler(_ req: Request) throws -> Future<HTTPStatus> {
+        return try flatMap( to: HTTPStatus.self,
+                            req.parameters.next(Cheese.self),
+                            req.parameters.next(Planet.self)) { cheese, planet in
+                                return cheese.planets
+                                    .attach(planet, on: req)
+                                    .transform(to: .created)
         }
     }
 

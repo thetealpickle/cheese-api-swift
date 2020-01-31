@@ -26,6 +26,13 @@ final class Cheese: Codable {
 }
 
 // MARK: - Class Extensions
+// MARK: X10: Vapor Relationships
+extension Cheese {
+    var planets: Siblings<Cheese, Planet, PlanetCheesePivot> {
+        return siblings()
+    }
+}
+
 // MARK: X10: Vapor/Fluent Models
 extension Cheese: Content {}
 extension Cheese: Migration {}

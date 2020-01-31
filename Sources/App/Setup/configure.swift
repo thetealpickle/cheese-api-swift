@@ -55,7 +55,12 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     migrations.add(model: Planet.self, database: .mysql)
     migrations.add(model: Cheese.self, database: .mysql)
 
+    // pivots
+    migrations.add(model: PlanetCheesePivot.self, database: .mysql)
+    
+    // admins
     migrations.add(migration: AdminUser.self, database: .mysql)
+    
     services.register(migrations)
 
     // Configure Command
