@@ -8,7 +8,7 @@ import FluentMySQL
 import Vapor
 
 final class Planet: Codable {
-    var id: UUID?
+    var id: UUIDString?
 
     var name: String
     var userID: User.ID
@@ -32,8 +32,10 @@ extension Planet {
 }
 
 // MARK: X10: Vapor/Fluent Models
-extension Planet: MySQLUUIDModel {}
+extension Planet: Parameter {}
 extension Planet: Content {}
+
+// MARK: X10: Migration
 extension Planet: Migration {
     
     static func prepare(on connection: MySQLConnection) -> Future<Void> {
@@ -45,4 +47,11 @@ extension Planet: Migration {
     }
     
 }
-extension Planet: Parameter {}
+
+// MARK: X10: Model
+extension Planet: Model {
+    typealias Database = MySQLDatabase
+
+    typealias ID = UUIDString
+    static let idKey: IDKey = \Planet.id
+}

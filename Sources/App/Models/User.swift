@@ -8,10 +8,10 @@ import FluentMySQL
 import Vapor
 
 final class User: Codable {
-    var id: UUID?
+    var id: UUIDString?
 
-    var fluentCreatedAt: Date?
-    var fluentUpdatedAt: Date?
+    var createdAt: Date?
+    var updatedAt: Date?
 
     var name: String
     var password: String
@@ -21,10 +21,18 @@ final class User: Codable {
         self.name = name
         self.password = password
         self.username = username
+        
+        self.id = UUID().uuidString
+        self.createdAt = Date()
+        self.updatedAt = Date()
     }
 }
 
 // MARK: - Class Extensions
+extension User: Content {}
+extension User: Migration {}
+extension User: Parameter {}
+
 // MARK: X10: Vapor Relationships
 extension User {
     var planets: Children<User, Planet> {
@@ -32,8 +40,10 @@ extension User {
     }
 }
 
-// MARK: X10: Vapor Models
-extension User: MySQLUUIDModel {}
-extension User: Content {}
-extension User: Migration {}
-extension User: Parameter {}
+// MARK: X10: Model
+extension User: Model {
+    typealias Database = MySQLDatabase
+
+    typealias ID = UUIDString
+    static let idKey: IDKey = \User.id
+}
