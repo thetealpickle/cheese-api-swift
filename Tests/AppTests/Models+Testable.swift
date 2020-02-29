@@ -16,7 +16,7 @@ extension User {
         let user = User(name: name,
                         username: username,
                         password: password)
-        return try user.save(on: connection).wait()
+        return try user.create(on: connection).wait()
     }
 }
 
@@ -24,9 +24,9 @@ extension Planet {
     static func create(name: String = "Rick",
                        userID: User.ID,
                        on connection: MySQLConnection) throws -> Planet {
-        let planet = Planet(name: name,
+        let planet = Planet(name,
                             userID: userID)
-        return try planet.save(on: connection).wait()
+        return try planet.create(on: connection).wait()
     }
 }
 
@@ -34,7 +34,7 @@ extension Planet {
 extension Cheese {
     static func create(name: String = "Jessica",
                        on connection: MySQLConnection) throws -> Cheese {
-        let cheese = Cheese(name: name)
-        return try cheese.save(on: connection).wait()
+        let cheese = Cheese(name)
+        return try cheese.create(on: connection).wait()
     }
 }
