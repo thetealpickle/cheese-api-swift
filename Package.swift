@@ -1,4 +1,4 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.2
 import PackageDescription
 
 let package = Package(
@@ -7,16 +7,32 @@ let package = Package(
         .library(name: "CheeseVapor", targets: ["App"]),
     ],
     dependencies: [
-        // 💧 A server-side Swift web framework.
-        .package(url: "https://github.com/vapor/vapor.git", from: "3.0.0"),
-
-        // 🔵 Swift ORM (queries, models, relations, etc) built on SQLite 3.
-        .package(url: "https://github.com/vapor/fluent-mysql.git", from: "3.0.0")
+        .package(url: "https://github.com/vapor/vapor.git", from: "4.3.0"),
+        
+        .package(url: "https://github.com/vapor/fluent.git", from: "4.0.0-rc"),
+        .package(url: "https://github.com/vapor/fluent-mysql-driver.git", from: "4.0.0-beta"),
+        
+        .package(url: "https://github.com/vapor/jwt.git", from: "4.0.0-rc"),
     ],
     targets: [
-        .target(name: "App", dependencies: ["FluentMySQL", "Vapor"]),
-        .target(name: "Run", dependencies: ["App"]),
-        .testTarget(name: "AppTests", dependencies: ["App"])
+        .target(name: "App",
+                dependencies: [
+                    .product(name: "Vapor", package: "vapor"),
+                    .product(name: "Fluent", package: "fluent"),
+                    .product(name: "FluentMySQLDriver", package: "fluent-mysql-driver"),
+                    .product(name: "JWT", package: "jwt")
+            ]
+        ),
+        .target(name: "Run",
+                dependencies: [
+                    .target(name: "App")
+            ]
+        ),
+        .testTarget(name: "AppTests",
+                    dependencies: [
+                        .target(name: "App")
+            ]
+        )
     ]
 )
 
