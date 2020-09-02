@@ -1,7 +1,7 @@
 //  B0RN BKLYN Inc.
-//  PROJECT: CheeseVapor
+//  PROJECT: Cheese API
 //
-//  Copyright © 2019 JESSICA JEAN JOSEPH. All rights reserved.
+//  Copyright © 2020 JESSICA JEAN JOSEPH. All rights reserved.
 //  MIT License
 
 import Vapor

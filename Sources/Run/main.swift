@@ -1,3 +1,11 @@
 import App
+import Vapor
 
-try app(.detect()).run()
+var env = Environment.detect()
+
+let app = Application(env)
+
+defer { app.shutdown() }
+
+try configure(app)
+try app.run()

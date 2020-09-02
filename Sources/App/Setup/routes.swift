@@ -9,4 +9,5 @@ import Vapor
 
 public func routes(_ app: Application) throws {
     
+    let api = app.grouped("\(API_VERSION)")
 }
