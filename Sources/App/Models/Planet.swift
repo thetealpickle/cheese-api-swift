@@ -1,18 +1,32 @@
 //  B0RN BKLYN Inc.
-//  PROJECT: CheeseVapor
+//  PROJECT: Cheese API
 //
-//  Copyright © 2019 JESSICA JEAN JOSEPH. All rights reserved.
+//  Copyright © 2020 JESSICA JEAN JOSEPH. All rights reserved.
 //  MIT License
 
-import FluentMySQL
+import Fluent
 import Vapor
 
-final class Planet: Codable {
-    var id: UUIDString?
+final class Planet: Model {
+    
+    @ID(custom: "uuid", generatedBy: .user)
+    var id: IDType?
 
+    @Timestamp(key: "created_at", on: .create)
+    var createdAt: Date?
+    
+    @Timestamp(key: "updated_at", on: .update)
+    var updatedAt: Date?
+    
+    @Field(key: "name")
     var name: String
+    
+    // FIXME: Fix user "parent" reference for vapor 4
+    @Field(key: "")
     var userID: User.ID
 
+    convenience init() {}
+    
     init(_ name: String, userID: User.ID) {
         self.name = name
         self.userID = userID
@@ -20,38 +34,4 @@ final class Planet: Codable {
 }
 
 // MARK: - Class Extensions
-// MARK: X10: Vapor Relationships
-extension Planet {
-    var user: Parent<Planet, User> {
-        return parent(\.userID)
-    }
-    
-    var cheeses: Siblings<Planet, Cheese, PlanetCheesePivot> {
-        return siblings()
-    }
-}
-
-// MARK: X10: Vapor/Fluent Models
-extension Planet: Parameter {}
 extension Planet: Content {}
-
-// MARK: X10: Migration
-extension Planet: Migration {
-    
-    static func prepare(on connection: MySQLConnection) -> Future<Void> {
-        return Database.create(self, on: connection) { builder in
-            
-            try addProperties(to: builder)
-            builder.reference(from: \.userID, to: \User.id)
-        }
-    }
-    
-}
-
-// MARK: X10: Model
-extension Planet: Model {
-    typealias Database = MySQLDatabase
-
-    typealias ID = UUIDString
-    static let idKey: IDKey = \Planet.id
-}

@@ -6,6 +6,7 @@
 
 import Foundation
 
+typealias IDType = UUIDString
 typealias UUIDString = String
 
 let API_VERSION = "v0"

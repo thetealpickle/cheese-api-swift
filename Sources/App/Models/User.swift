@@ -1,21 +1,32 @@
 //  B0RN BKLYN Inc.
-//  PROJECT: CheeseVapor
+//  PROJECT: Cheese API
 //
-//  Copyright © 2019 JESSICA JEAN JOSEPH. All rights reserved.
+//  Copyright © 2020 JESSICA JEAN JOSEPH. All rights reserved.
 //  MIT License
 
-import FluentMySQL
+import Fluent
 import Vapor
 
-final class User: Codable {
-    var id: UUIDString?
+final class User: Model {
+    @ID(custom: "uuid", generatedBy: .user)
+    var id: IDType?
 
+    @Timestamp(key: "created_at", on: .create)
     var createdAt: Date?
+    
+    @Timestampe(key: "updated_at", on: .update)
     var updatedAt: Date?
 
+    @Field(key: "name")
     var name: String
+    
+    @Field(key: "password")
     var password: String
+    
+    @Field(key: "username")
     var username: String
+    
+    convenience init() {}
     
     init(name: String, username: String, password: String) {
         self.name = name
@@ -30,20 +41,3 @@ final class User: Codable {
 
 // MARK: - Class Extensions
 extension User: Content {}
-extension User: Migration {}
-extension User: Parameter {}
-
-// MARK: X10: Vapor Relationships
-extension User {
-    var planets: Children<User, Planet> {
-        return children(\.userID)
-    }
-}
-
-// MARK: X10: Model
-extension User: Model {
-    typealias Database = MySQLDatabase
-
-    typealias ID = UUIDString
-    static let idKey: IDKey = \User.id
-}

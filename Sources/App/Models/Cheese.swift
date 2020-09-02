@@ -1,21 +1,27 @@
 //  B0RN BKLYN Inc.
-//  PROJECT: CheeseVapor
+//  PROJECT: Cheese API
 //
-//  Copyright © 2019 JESSICA JEAN JOSEPH. All rights reserved.
+//  Copyright © 2020 JESSICA JEAN JOSEPH. All rights reserved.
 //  MIT License
 
-import FluentMySQL
+import Fluent
 import Vapor
 
-final class Cheese: Codable {
-    var id: UUIDString? // custom id needs to have its type specified, see model X10
+final class Cheese: Model {
+    @ID(custom: "uuid", generatedBy: .user)
+    var id: IDType?
 
+    @Timestamp(key: "created_at", on: .create)
     var createdAt: Date?
+    
+    @Timestamp(key: "updated_at", on: .update)
     var updatedAt: Date?
 
+    @Field("name")
     var name: String
 
-
+    convenience init() {}
+    
     init(_ name: String) {
         self.name = name
 
@@ -26,22 +32,4 @@ final class Cheese: Codable {
 }
 
 // MARK: - Class Extensions
-// MARK: X10: Vapor Relationships
-extension Cheese {
-    var planets: Siblings<Cheese, Planet, PlanetCheesePivot> {
-        return siblings()
-    }
-}
-
-// MARK: X10: Vapor/Fluent Models
 extension Cheese: Content {}
-extension Cheese: Migration {}
-extension Cheese: Parameter {}
-
-// MARK: X10: Model
-extension Cheese: Model {
-    typealias Database = MySQLDatabase
-
-    typealias ID = UUIDString
-    static let idKey: IDKey = \Cheese.id
-}
