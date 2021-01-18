@@ -16,9 +16,11 @@ Then this is your template.
 
 ## BACKSTORY
 
-In the alien hyperstream (the human equivalent of a mall), the substance known on earth as cheese 🧀 is sold as a highly corrosive weapon 🦠💣 capable of destroying species and slowing down thier higher consciousness evolution. Quite a useful tool in war 😬. Different planets culture varying toxic levels of cheese. <br>
+In the alien hyper-stream (the human equivalent of a mall), a substance once believed to be extinct has resurfaced. This substance, known on Earth as 🧀 cheese, is a highly corrosive weapon 🦠 capable of slowing down higher consciousness evolution. The ultimate weapon in 💣 war. <br>
 
-The ultimate alien queen 👑 is sending out a squad to go to every planet and collect cheese data. The queen has an affinity for earth and wants to use human technology for the squad's data collection. To keep the technology authentically human, the queen had an actual human develop the technology.<br>
+The Grand Alieness has approved a reconnaissance mission to collect cheese data from every planet. For the mission, given the origins of the weapon, The Grand Alieness has opted for the use of human technology as the data collection method. <br>
+
+Different planets culture cheese with varying toxin levels.<br>
 
 This is the API.
 
